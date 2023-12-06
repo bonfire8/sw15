@@ -14,7 +14,7 @@ on:
     branches: [ "master" ]
 
 env:
-  DOCKER_IMAGE_NAME: parking
+  DOCKER_IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }/parking
   EC2_HOST: 3.38.97.205
   EC2_SSH_USER: ec2-user
   PRIVATE_KEY: ${{ secrets.PEM_KEY }}
@@ -53,7 +53,7 @@ jobs:
       run: docker build . --file Dockerfile --tag ${{ env.DOCKER_IMAGE_NAME }}:latest
 
     - name: Login to Docker Hub using Access Token
-      run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+      run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | sudo docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
     - name: Push the Docker image
       run: docker push ${{ env.DOCKER_IMAGE_NAME }}:latest
