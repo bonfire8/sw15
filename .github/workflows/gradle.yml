@@ -9,9 +9,15 @@ name: Java CI with Gradle
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "github-actions" ]
   pull_request:
     branches: [ "master" ]
+
+env:
+  DOCKER_IMAGE_NAME: parking
+  EC2_HOST: 3.38.97.205
+  EC2_SSH_USER: ec2-user
+  PRIVATE_KEY: ${{ secrets.PEM_KEY }}
 
 permissions:
   contents: read
