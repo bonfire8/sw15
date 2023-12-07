@@ -30,5 +30,12 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: ./src/main/frontend/package-lock.json
+
+    - name: .env setting 
+      run: | 
+        echo "REACT_APP_KAKAO_APP_KEY=${{ secrets.REACT_APP_KAKAO_APP_KEY }}" >> .env
+        echo "REACT_APP_GOOGLE_APP_KEY=${{ secrets.REACT_APP_GOOGLE_APP_KEY }}" >> .env
+      
     - run: npm ci
-    - run: CI='false' npm run build --if-present
+    
+    - run: CI='false' npm run build --if-present 
