@@ -15,7 +15,7 @@ jobs:
     
     defaults:
       run:
-        working-directory: ./sw15/src/main/frontend
+        working-directory: ./src/main/frontend
     
     strategy:
       matrix:
