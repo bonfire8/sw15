@@ -1,5 +1,5 @@
 FROM node:18.15.0 AS builder 
-# RUN apt-get update -qq && apt-get install -y --no-install-recommends build-essential python && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -qq && apt-get install -y --no-install-recommends build-essential python && rm -rf /var/lib/apt/lists/*
 WORKDIR /usr/src/app
 COPY package.json ./
 ENV TZ=Asia/Seoul
@@ -16,4 +16,4 @@ COPY --from=builder /usr/src/app/build ./build
 COPY --from=builder /usr/src/app/node_modules ./node_modules
 
 EXPOSE 4000
-CMD ["node", "./build/main"]
+CMD ["serve", "-s", "build", "-l", "4000"]
