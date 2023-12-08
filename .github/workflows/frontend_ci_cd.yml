@@ -5,13 +5,13 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "github-action" ]
   pull_request:
     branches: [ "master" ]
 
 env:
   DOCKER_IMAGE_NAME: parking-frontend
-  EC2_HOST: 3.38.97.205
+  EC2_HOST: 13.209.162.83
   EC2_SSH_USER: ec2-user
   PRIVATE_KEY: ${{ secrets.PEM_KEY }}
   CONTAINER_NAME: parking-frontend
