@@ -1,5 +1,5 @@
 FROM node:18.15.0 AS builder 
-// RUN apk --no-cache add --virtual builds-deps build-base
+# RUN apt-get update -qq && apt-get install -y --no-install-recommends build-essential python && rm -rf /var/lib/apt/lists/*
 WORKDIR /usr/src/app
 COPY package.json ./
 ENV TZ=Asia/Seoul
