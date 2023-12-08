@@ -81,9 +81,9 @@ jobs:
           if [ ! -z "$CONTAINER_ID" ]; then
             sudo docker stop $CONTAINER_ID
             sudo docker rm $CONTAINER_ID
-            sudo docker image prune -f
           fi
 
           sudo docker pull ${{ env.DOCKER_HUB }}
           sudo docker run --name ${{ env.CONTAINER_NAME }} -d -p 4000:4000 -e TZ=Asia/Seoul ${{ env.DOCKER_HUB }}
           sudo docker network connect parking-network parking-frontend
+          sudo docker image prune -f
